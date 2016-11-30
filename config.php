@@ -1,11 +1,10 @@
 <?php
-//Config file to setup database & such
-$dbname = 'abbottcrm';
-$dblocation = 'localhost';
-$dbuser = 'abbot';
-$dbpass = 'abbottpass';
-$db = new mysqli($dblocation, $dbuser, $dbpass, $dbname);
+//REPLACE THESE VARIABLES WITH YOUR OWN DATABASE INFO.
+//IF YOU NEED HELP SETTING UP YOUR DATABASE CONTACT YOUR HOST
+//OR HIRE A DEVELOPER -- INDELIBLE INC. IS ALWAYS UP FOR IT HTTPS://BECOMEINDELIBLE.COM
 
-if($db->connect_errno > 0){
-    die('Unable to connect to database [' . $db->connect_error . ']');
-}
+$dbname = 'abbottcrm';//Database name
+$dblocation = 'localhost';//Database location (localhost should work in most cases)
+$dbuser = 'abbot';//Database username
+$dbpass = 'abbottpass';//Database password
+$table_prefix = 'icrm_';//Set your database prefix to avoid train wrecks.
