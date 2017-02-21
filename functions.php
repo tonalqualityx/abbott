@@ -9,3 +9,7 @@ function TableExists($table, $mysqli) {
   	return false;
   }
 }
+
+function getModal($modals) {
+	
+}

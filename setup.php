@@ -1,7 +1,7 @@
 <?php
 //Install script
 // phpinfo();
-require('head.php');
+require_once('head.php');
 if($dbfail) {
 	$message = "<p>Your database connection has failed. If you haven't already edited config.php you'll need to enter your database information. If you have, then there may be an error.</p>
 		<p>Failed to connect to MySQL: ( $mysqli->connect_errno ) $mysqli->connect_error</p>
@@ -13,7 +13,11 @@ else {
 $submitted = false;
 $go = false;
 $setup = false;
-if(isset($_POST['setitup'])) {
+if(TableExists($table_prefix . 'users', $mysqli)) {
+	$setup = true;
+	header( "Location: $base/" ) ;
+}
+if(isset($_POST['setitup']) && !$setup) {
 	$submitted = true;
 	$user = htmlspecialchars($_POST['user']);
 	$email = htmlspecialchars($_POST['email']);
@@ -28,11 +32,6 @@ if(isset($_POST['setitup'])) {
 		$go = false;
 	}
 }
-else {
-	if(TableExists($table_prefix . 'users', $mysqli)) {
-		$setup = true;
-	}
-}
 
 include('header.php'); ?>
 <?php if($setup) { ?>
@@ -42,6 +41,7 @@ include('header.php'); ?>
 		</div>
 		<div class="small-12 column">
 			<p>Setup has already been run. Please stop calling here.</p>
+			<p>Try starting <a href="/">here</a>. And seriously. Don't come back here anymore.</p>
 		</div>
 	</div>
 <?php } 
