@@ -38,11 +38,34 @@ if(isset($_POST['first'])) {
 	$tank_insert = "INSERT INTO " . $table_prefix . "tanks (tank_size, location_id) VALUES ($tank_size, $loc_id)";
 	$query = mysqli_query($mysqli, $tank_insert);
 }
+if(!isset($cust_id)) {
+	$cust_id = $_GET['cust'];
+}
+
 include('header.php'); ?>
+<?php
+//Get the customer info
+$sql = "SELECT first_name, last_name, mailing_st, mailing_st2, mailing_city, mailing_state, mailing_zip FROM " . $table_prefix . "customers WHERE customer_id=$cust_id";
+$query = mysqli_query($mysqli, $sql);
+while($row = mysqli_fetch_assoc($query)) { ?>
+	<div class="row">
+		<div class="medium-4 small-12 column">
+			<h2><?php echo $row['first_name'] . ' ' . $row['last_name']; ?> </h2>
+		</div>
+		<div class="medium-4 small-12 thin-border pad-15 column">
+			<p><strong>Billing Address</strong><br />
+			<?php echo $row['mailing_st']; ?><br />
+			<?php echo $row['mailing_st2'] ? $row['mailing_st2'] . '<br />':''; ?>
+			<?php echo $row['mailing_city'] . ', ' . $row['mailing_state'] . ' ' . $row['mailing_zip']; ?></p>
+		</div>
+	</div>
+<?php } ?>
 <div class="row">
 	<div class="small-12 column">
-		<h2>Customer Name</h2>
+		<h3>Service Locations</h3>
 	</div>
 </div>
-
+<div class="row">
+	<?php $sql = "SELECT  FROM " . $table_prefix . ""; ?>
+</div>
 <?php include('footer.php'); ?>
