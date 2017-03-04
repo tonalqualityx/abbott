@@ -5,4 +5,7 @@ $(document).ready(function() {
 		$('#' + reveal_target).toggleClass('hide');
 		console.log(reveal_target);
 	});
+	$('#toggle-nav').click(function() {
+		$('#nav').toggleClass('revealer');
+	});
 });

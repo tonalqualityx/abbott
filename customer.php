@@ -49,23 +49,35 @@ $sql = "SELECT first_name, last_name, mailing_st, mailing_st2, mailing_city, mai
 $query = mysqli_query($mysqli, $sql);
 while($row = mysqli_fetch_assoc($query)) { ?>
 	<div class="row">
-		<div class="medium-4 small-12 column">
-			<h2><?php echo $row['first_name'] . ' ' . $row['last_name']; ?> </h2>
+		<div class="medium-4 small-12 column" id="customer">
+			<h2><?php echo "<span class='first-name'>" . $row['first_name'] . '</span> <span class="last-name">' . $row['last_name']; ?></span> <a href="#" class="button small-button">Edit</a></h2>
 		</div>
 		<div class="medium-4 small-12 thin-border pad-15 column">
 			<p><strong>Billing Address</strong><br />
-			<?php echo $row['mailing_st']; ?><br />
-			<?php echo $row['mailing_st2'] ? $row['mailing_st2'] . '<br />':''; ?>
-			<?php echo $row['mailing_city'] . ', ' . $row['mailing_state'] . ' ' . $row['mailing_zip']; ?></p>
+			<?php echo '<span class="street">' . $row['mailing_st']; ?></span><br />
+			<?php echo $row['mailing_st2'] ? '<span class="street-2">' . $row['mailing_st2'] . '</span><br />':''; ?>
+			<?php echo '<span class="city">' . $row['mailing_city'] . '</span>, <span class="state">' . $row['mailing_state'] . '</span> <span class="zip">' . $row['mailing_zip']; ?></span><br /><a href="#" class="button small-button">Edit</a></p>
 		</div>
 	</div>
 <?php } ?>
-<div class="row">
-	<div class="small-12 column">
-		<h3>Service Locations</h3>
+<div class="section grey">
+	<div class="row">
+		<div class="small-12 column">
+			<h2>Service Locations <a href="#" class="button small-button">Add Location</a></h2>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<?php $sql = "SELECT  FROM " . $table_prefix . ""; ?>
+	<div class="row" id="service-locations">
+		<?php $sql = "SELECT " . $table_prefix . "customers_to_locations.customer_id, " . $table_prefix . "customers_to_locations.location_id, " . $table_prefix . "service_locations.location_st,  " . $table_prefix . "service_locations.location_st2,  " . $table_prefix . "service_locations.location_city,  " . $table_prefix . "service_locations.location_state,  " . $table_prefix . "service_locations.location_zip  FROM " . $table_prefix . "customers_to_locations LEFT JOIN " . $table_prefix . "service_locations ON " . $table_prefix . "customers_to_locations.location_id=" . $table_prefix . "service_locations.location_id WHERE " . $table_prefix . "customers_to_locations.customer_id=$cust_id"; 
+			$query = mysqli_query($mysqli, $sql);
+			while($row = mysqli_fetch_assoc($query)) { ?>
+				<div class="small-12 medium-6 column">
+					<h3><span class="street"><?php echo $row['location_st'] . "</span><br />";
+						echo $row['location_st2'] ? "<span class='street-2'>" . $row['location_st2'] ."</span><br />": '';
+						echo "<span class='city'>" . $row['location_city'] . '</span>, <span class="state">' . $row['location_state'] . '</span> <span class="zip">' . $row['location_zip']; ?></span><br />
+						<a href="#" class="button small-button success">Schedule</a> <a href="#" class="button small-button">Edit</a> <a href="#" class="button small-button alert">Delete</a></h3>
+				</div>
+			<?php }
+		?>
+	</div>
 </div>
 <?php include('footer.php'); ?>

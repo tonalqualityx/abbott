@@ -34,24 +34,26 @@ require('header.php'); ?>
             });
         </script>
 <div class="row">
-	<div class="small-12 medium-8 column">
+	<div class="small-12  column">
 		<h3>Search Accounts</h3>
 		<div class="row">
 			<form method="POST">
-				<div class="small-4 column">
+				<div class="small-12 medium-6 large-4 column">
 					<label>
 						Last Name:
 						<input type="text" placeholder="Scooterbella" name="last" id="last" tabindex="1"/>
+          </label>
+        </div>
+        <div class="small-12 medium-6 large-4 column end">
+          <label>
+            Street Address:
+            <input type="text" placeholder="123 Not Your House Lane" name="addy" id="addy" tabindex="2" />
+          </label>
+        </div>
+        <div class="small-12 column">
 						<input type="submit" class="button" value="search" id="button" tabindex="3"/>
 						<a class="button" data-open="newCustomer" tabindex="4">Add New</a>
-					</label>
-				</div>
-				<div class="small-4 column end">
-					<label>
-						Street Address:
-						<input type="text" placeholder="123 Not Your House Lane" name="addy" id="addy" tabindex="2" />
-					</label>
-				</div>
+        </div>
 
 			</form>
 		</div>

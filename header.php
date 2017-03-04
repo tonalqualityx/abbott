@@ -11,8 +11,20 @@ require_once('head.php'); ?>
     <link rel="stylesheet" href="css/app.min.css">
     <script src="js/vendor/jquery.js"></script>
   </head>
-  <div class="row">
-  	<div class="small-12 column">
-	  	<h1>Indelible CRM</h1>
-  	</div>
+  <a href="#" id="toggle-nav"><img src="img/hamburger.png"></a>
+  <div id="nav">
+    <div id="inner-nav">
+      <h3>Tools</h3>
+      <ul>
+        <li><a href="<?php echo $url; ?>"><img src="img/dashboard.png">Dashboard</a></li>
+        <li><a href="<?php echo $url; ?>/schedule.php"><img src="img/schedule.png">Schedule</a></li>
+        <li><a href="<?php echo $url; ?>/reports.php"><img src="img/reports.png">Reports</a></li>
+      </ul>
+    </div>
   </div>
+  <div id="content">
+    <div class="row">
+    	<div class="small-12 column">
+  	  	<h1>Indelible CRM</h1>
+    	</div>
+    </div>

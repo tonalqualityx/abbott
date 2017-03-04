@@ -10,3 +10,4 @@ $dblocation = 'localhost';//Database location (localhost should work in most cas
 $dbuser = 'abbot';//Database username
 $dbpass = '7fvufn7fPuxrU2W3';//Database password
 $table_prefix = 'icrm_';//Set your database prefix to avoid train wrecks.
+$url = '//localhost/abbottcrm'; //Setup root URL

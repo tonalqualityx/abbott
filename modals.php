@@ -41,8 +41,8 @@
 						</label>
 					</div>	
 					<div class="small-12 medium-3 column">
-						<label>Billing Zip
-:							<input type="text" name="bill_zip" placeholder="03603">
+						<label>Billing Zip:
+							<input type="text" name="bill_zip" placeholder="03603">
 						</label>
 					</div>		
 					<div class="small-12 medium-6 column">
@@ -70,31 +70,7 @@
 					</label>
 				</div>
 				<div id="service-address" class="hide">
-					<div class="small-12 column">
-						<label>Service Street Address Line 1:
-							<input type="text" placeholder="12 Cloverfield Lane" name="service_addy1">
-						</label>
-					</div>
-					<div class="small-12 column">
-						<label>Service Street Address Line 2:
-							<input type="text" placeholder="12 Cloverfield Lane" name="service_addy2">
-						</label>
-					</div>
-					<div class="small-12 medium-6 column">
-						<label>Service City:
-							<input type="text" name="service_city" placeholder="Gotham">
-						</label>
-					</div>
-					<div class="small-12 medium-3 column">
-						<label>Service State:
-							<input type="text" name="service_state" placeholder="NH">
-						</label>
-					</div>	
-					<div class="small-12 medium-3 column">
-						<label>Service Zip
-:							<input type="text" name="service_zip" placeholder="03603">
-						</label>
-					</div>				
+					<?php newServiceLocation(); ?>
 				</div><!-- Hidden Section -->
 				<div class="small-12 medium-6 large-4 column end">
 					<label>Tank Size (in Gallons)
