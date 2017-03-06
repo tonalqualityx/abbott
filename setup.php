@@ -13,9 +13,11 @@ else {
 $submitted = false;
 $go = false;
 $setup = false;
-if(TableExists($table_prefix . 'users', $mysqli)) {
-	$setup = true;
-	header( "Location: $base/" ) ;
+if ($result = $mysqli->query("SHOW TABLES LIKE '{$table_prefix}customers'")) {
+    if($result->num_rows == 1) {
+		header( "Location: $url/" ) ;
+		$setup = true;
+    }
 }
 if(isset($_POST['setitup']) && !$setup) {
 	$submitted = true;

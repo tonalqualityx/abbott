@@ -1,5 +1,5 @@
 <?php 
-require_once('head.php'); ?>
+require_once('head.php');?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
